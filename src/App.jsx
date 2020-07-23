@@ -1,37 +1,33 @@
-import React, { useState } from "react";
-import logo from "./logo.svg";
+import React, { useState, useEffect } from "react";
+
 import "./App.css";
-import NewCmp from "./components/NewCmp";
-import ShowFilteredCitis from "./components/ShowFilteredCitis";
+
+import InputComp from "./components/InputComp";
+import ListComp from "./components/ListComp";
 
 function App() {
-  let arrCitys = ["jerusalem", "tlv", "rishun", "haifa", "biniamina"];
-  const [testState, setTestState] = useState(true);
-  const [textState, setTextState] = useState("");
-  const f1 = () => {
-    if (1 == 2) {
-      return true;
-    } else {
-      return false;
-    }
+  let [infoArrState, setInfoArrState] = useState([]);
+  let [showInputCompState, setShowInputCompState] = useState(true);
+
+  const handleTxtChange = (txt) => {
+    let arr = [...infoArrState, txt];
+    setInfoArrState(arr);
   };
-  const handleBtnClick = (event) => {
-    setTestState(!testState);
+  const handleDeleteItem = (idx) => {
+    let arr = [...infoArrState];
+    arr.splice(idx, 1);
+    setInfoArrState(arr);
   };
-  const handleTxtChange = (event) => {
-    // console.log(event.target.value);
-    setTextState(event.target.value);
+  const handleDeleteInputComp = () => {
+    setShowInputCompState(false);
   };
   return (
-    <div className="App">
-      <input type="text" onChange={handleTxtChange} value={textState} />
-      <span>{textState}</span>
-      <button onClick={handleBtnClick}>Change state</button>
-      <h1>{testState + ""}</h1>
-      <NewCmp name="kenny" lname="lname" />
-      <ShowFilteredCitis
-        citisArr={arrCitys.filter((city) => city.startsWith(textState))}
-      />
+    <div className="container">
+      <button className="btn btn-danger" onClick={handleDeleteInputComp}>
+        x
+      </button>
+      {showInputCompState && <InputComp onTxtChange={handleTxtChange} />}
+      <ListComp list={infoArrState} onDeleteItem={handleDeleteItem} />
     </div>
   );
 }

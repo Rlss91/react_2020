@@ -4,7 +4,89 @@ import "./RefsPage.css";
 function ParamsPage(props) {
   console.log(props);
   return (
-    <div className="d-flex flex-column maxWidth">{props.match.params.id}</div>
+    <div>
+      <div className="d-flex flex-column maxWidth">
+        {props.match.params.id}
+        <button
+          onClick={() => {
+            props.history.push("/listpage");
+          }}
+        >
+          to listpage
+        </button>
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <h1 id="tttt">here</h1>
+    </div>
   );
 }
 

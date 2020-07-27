@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, NavLink } from "react-router-dom";
 
 import "./App.css";
 
@@ -12,17 +12,26 @@ function App() {
   return (
     <div className="container">
       <nav>
-        <Link to="/listpage">List</Link>|<Link to="/refspage">Refs</Link>|
-        <Link
+        <NavLink activeClassName="active1" to="/listpage">
+          List
+        </NavLink>
+        |
+        <NavLink activeClassName="active1" to="/refspage">
+          Refs
+        </NavLink>
+        |
+        <NavLink
+          activeClassName="active1"
           to={{
             pathname: "/paramspage/12",
             state: {
               test: [1, 2, 2, 3],
             },
+            hash: "#tttt",
           }}
         >
           Params
-        </Link>
+        </NavLink>
         |{/* <a href="/listpage">List</a> */}
         {/* <a href="/refspage">Refs</a> */}
       </nav>

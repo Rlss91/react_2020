@@ -1,33 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { Switch, Route, Link } from "react-router-dom";
 
 import "./App.css";
 
-import InputComp from "./components/InputComp";
-import ListComp from "./components/ListComp";
+import RefsPage from "./pages/RefsPage";
+import ListPage from "./pages/ListPage";
+import ParamsPage from "./pages/ParamsPage";
+import RefsClassPage from "./pages/RefsClassPage";
 
 function App() {
-  let [infoArrState, setInfoArrState] = useState([]);
-  let [showInputCompState, setShowInputCompState] = useState(true);
-
-  const handleTxtChange = (txt) => {
-    let arr = [...infoArrState, txt];
-    setInfoArrState(arr);
-  };
-  const handleDeleteItem = (idx) => {
-    let arr = [...infoArrState];
-    arr.splice(idx, 1);
-    setInfoArrState(arr);
-  };
-  const handleDeleteInputComp = () => {
-    setShowInputCompState(false);
-  };
   return (
     <div className="container">
-      <button className="btn btn-danger" onClick={handleDeleteInputComp}>
-        x
-      </button>
-      {showInputCompState && <InputComp onTxtChange={handleTxtChange} />}
-      <ListComp list={infoArrState} onDeleteItem={handleDeleteItem} />
+      <nav>
+        <Link to="/listpage">List</Link>|<Link to="/refspage">Refs</Link>|
+        <Link
+          to={{
+            pathname: "/paramspage/12",
+            state: {
+              test: [1, 2, 2, 3],
+            },
+          }}
+        >
+          Params
+        </Link>
+        |{/* <a href="/listpage">List</a> */}
+        {/* <a href="/refspage">Refs</a> */}
+      </nav>
+      <Switch>
+        <Route path="/refspage" component={RefsPage} />
+        <Route path="/listpage" component={ListPage} />
+        <Route path="/paramspage/:id" component={ParamsPage} />
+      </Switch>
     </div>
   );
 }

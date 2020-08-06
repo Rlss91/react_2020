@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Link, NavLink } from "react-router-dom";
+import { Switch, Route, NavLink } from "react-router-dom";
 
 import "./App.css";
 
@@ -20,6 +20,10 @@ function App() {
           Refs
         </NavLink>
         |
+        <NavLink activeClassName="active1" to="/refspageclass">
+          Refs classes
+        </NavLink>
+        |
         <NavLink
           activeClassName="active1"
           to={{
@@ -37,6 +41,7 @@ function App() {
       </nav>
       <Switch>
         <Route path="/refspage" component={RefsPage} />
+        <Route path="/refspageclass" component={RefsClassPage} />
         <Route path="/listpage" component={ListPage} />
         <Route path="/paramspage/:id" component={ParamsPage} />
       </Switch>
